@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./nav.css">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css">
+    <link rel="stylesheet" href="./customer.css">
+    <title>Banking System</title>
+</head>
+
+<body>
+    <header>
+        <nav class="main-nav">
+            <ul class="navlinks">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./customer.html">View Customers</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <div class="my-info text-center title">
+            <h1>Account Holder : Abhishek Sharma </h1>
+            <h2>Net Bank Balance : <span id="myAccountBalance">45000</span> ₹</h2>
+            <button class="btn btn-info" data-toggle="modal" data-target="#sendMoney">Send Money</button>
+            <button class="btn btn-info" href="" data-toggle="modal" data-target="#transactionHistory">See All Transactions</button>
+        </div>
+
+        <!-- Send Money pop-up -->
+        <div class="modal fade" id="sendMoney" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title" id="exampleModalLabel">Send Money</h2>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form autocomplete="off" action="">
+                            <div class="input-group mb-3">
+                                <input type="text" id="enterName" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                <div class="input-group-append" >
+                                    <span class="input-group-text" id="basic-addon2">@email.com</span>
+                                </div>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">₹</span>
+                                </div>
+                                <input type="text" id="enterAmount" class="form-control" placeholder=" Enter Amount" aria-label="Amount">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">.00</span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" onclick="sendMoney()" class="btn btn-success" data-dismiss="modal">Send Money</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Transaction History pop-up -->
+        <div class="modal fade" id="transactionHistory" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title" id="exampleModalLabel">Transaction History</h2>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <ol id="transaction-history-body">
+        
+                        </ol>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- All customers -->
+        <div class="container">
+            <h1>ALL CUSTOMERS OF OUR BANK</h1>
+            <ul class="responsive-table">
+                <li class="table-header">
+                    <div class="col col-1">No.</div>
+                    <div class="col col-2">Name</div>
+                    <div class="col col-3">Email</div>
+                    <div class="col col-4">Amount(Rs.)</div>
+                    <div class="col col-5">Payment</div>
+                </li>
+                <li class="table-row">
+                    <div class="col col-1" data-label="No.">1</div>
+                    <div class="col col-2" data-label="Name">Ankur</div>
+                    <div class="col col-3" data-label="Email">ankur@gmail.com</div>
+                    <div class="col col-4" data-label="Amount"><a id="ankurBankBalance">4500</a> ₹</div>
+                    <div class="col col-5" data-label="Payment"><a class="button" href="./payment.html">Transfer Money</a></div>
+                </li>
+                <li class="table-row">
+                    <div class="col col-1" data-label="No.">2</div>
+                    <div class="col col-2" data-label="Name">Shivam</div>
+                    <div class="col col-3" data-label="Email">shivam@gmail.com</div>
+                    <div class="col col-4" data-label="Amount"><a id="shivamBankBalance">2400</a> ₹</div>
+                    <div class="col col-5" data-label="Payment"><a class="button" href="./payment.html">Transfer Money</a></div>
+                </li>
+                <li class="table-row">
+                    <div class="col col-1" data-label="No.">3</div>
+                    <div class="col col-2" data-label="Name">Gourav</div>
+                    <div class="col col-3" data-label="Email">gourav@gmail.com</div>
+                    <div class="col col-4" data-label="Amount"><a id="gouravBankBalance">3400</a> ₹</div>
+                    <div class="col col-5" data-label="Payment"><a class="button" href="./payment.html">Transfer Money</a></div>
+                </li>
+                <li class="table-row">
+                    <div class="col col-1" data-label="No.">4</div>
+                    <div class="col col-2" data-label="Name">Alex</div>
+                    <div class="col col-3" data-label="Email"><a id="name">alex</a>@gmail.com</div>
+                    <div class="col col-4" data-label="Amount"><a id="alexBankBalance">5900</a> ₹</div>
+                    <div class="col col-5" data-label="Payment"><a class="button" href="./payment.html">Transfer Money</a></div>
+                </li>
+                <li class="table-row">
+                    <div class="col col-1" data-label="No.">5</div>
+                    <div class="col col-2" data-label="Name">Priya</div>
+                    <div class="col col-3" data-label="Email"><a id="name">priya</a>@gmail.com</div>
+                    <div class="col col-4" data-label="Amount"><a id="priyaBankBalance">7000</a> ₹</div>
+                    <div class="col col-5" data-label="Payment"><a class="button" href="./payment.html">Transfer Money</a></div>
+                </li>
+                <li class="table-row">
+                    <div class="col col-1" data-label="No.">6</div>
+                    <div class="col col-2" data-label="Name">Ankur</div>
+                    <div class="col col-3" data-label="Email"><a id="name">ankur</a>@gmail.com</div>
+                    <div class="col col-4" data-label="Amount"><a id="ankurBankBalance">8500</a> ₹</div>
+                    <div class="col col-5" data-label="Payment"><a class="button" href="./payment.html">Transfer Money</a></div>
+                </li>
+                <li class="table-row">
+                    <div class="col col-1" data-label="No.">7</div>
+                    <div class="col col-2" data-label="Name">yash</div>
+                    <div class="col col-3" data-label="Email"><a id="name">yash</a>@gmail.com</div>
+                    <div class="col col-4" data-label="Amount"><a id="yashBankBalance">7800</a> ₹</div>
+                    <div class="col col-5" data-label="Payment"><a class="button" href="./payment.html">Transfer Money</a></div>
+                </li>
+                <li class="table-row">
+                    <div class="col col-1" data-label="No.">8</div>
+                    <div class="col col-2" data-label="Name">Jack</div>
+                    <div class="col col-3" data-label="Email"><a id="name">jack</a>@gmail.com</div>
+                    <div class="col col-4" data-label="Amount"><a id="jackBankBalance">5300</a> ₹</div>
+                    <div class="col col-5" data-label="Payment"><a class="button" href="./payment.html">Transfer Money</a></div>
+                </li>
+                <li class="table-row">
+                    <div class="col col-1" data-label="No.">9</div>
+                    <div class="col col-2" data-label="Name">Nick</div>
+                    <div class="col col-3" data-label="Email"><a id="name">nick</a>@gmail.com</div>
+                    <div class="col col-4" data-label="Amount"><a id="nickBankBalance">4600</a> ₹</div>
+                    <div class="col col-5" data-label="Payment"><a class="button" href="./payment.html">Transfer Money</a></div>
+                </li>
+                <li class="table-row">
+                    <div class="col col-1" data-label="No.">10</div>
+                    <div class="col col-2" data-label="Name">Ishu</div>
+                    <div class="col col-3" data-label="Email"><a id="name">ishu</a>@gmail.com</div>
+                    <div class="col col-4" data-label="Amount"><a id="ishuBankBalance">6800</a> ₹</div>
+                    <div class="col col-5" data-label="Payment"><a class="button" href="./payment.html">Transfer Money</a></div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"></script>
+    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"></script>
+
+</body>
+</html>
